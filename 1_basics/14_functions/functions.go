@@ -43,6 +43,10 @@ func main() {
 
 	process2(2)
 
+	process3()
+
+	fmt.Printf("After panic\n")
+
 }
 
 // Add functions that simply returns the sum from a and b
@@ -94,9 +98,22 @@ func process() {
 	fmt.Printf("Normal statement\n")
 }
 
+// Using panick keyword
 func process2(input int) {
 	if input < 0 {
 		panic("Input must be a non-negative number")
 	}
 	fmt.Printf("Input value is: %d\n", input)
+}
+
+// Using recover
+func process3() {
+	// This executed only when exiting the function to check if it panicked to not terminate
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered from panic:", r)
+		}
+	}()
+	fmt.Println("Start process3")
+	panic("Something went wrong")
 }
