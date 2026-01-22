@@ -5,6 +5,10 @@ import (
 	"fmt"
 )
 
+func init() {
+	fmt.Printf("Initializing package...\n")
+}
+
 func main() {
 	fmt.Println(add(1, 2))
 
@@ -44,6 +48,9 @@ func main() {
 	process2(2)
 
 	process3()
+
+	//& If this executes all defer statement that are queued (line 39) won't get executed
+	// os.Exit(1)
 
 	fmt.Printf("After panic\n")
 
