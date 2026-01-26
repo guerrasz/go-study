@@ -24,6 +24,14 @@ type Address struct {
 	country string
 }
 
+func (p Person) fullName() string {
+	return p.firstName + " " + p.lastName
+}
+
+func (p *Person) incrementAge(n int) {
+	p.age += n
+}
+
 func main() {
 
 	lucas := Person{
@@ -78,12 +86,4 @@ func main() {
 
 	// structs of the same type are comparable
 	fmt.Printf("Lucas and Amanda are equal? %t\n", lucas == amanda)
-}
-
-func (p Person) fullName() string {
-	return p.firstName + " " + p.lastName
-}
-
-func (p *Person) incrementAge(n int) {
-	p.age += n
 }
