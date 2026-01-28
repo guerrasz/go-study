@@ -53,4 +53,21 @@ func main() {
 	// print unix time
 	fmt.Printf("Unix time: %v\n", t.Unix())
 	fmt.Printf("Unix time in tokyo: %v\n", tTokyo.Unix())
+
+	// more time parsing
+	str := "Jul 03, 2024 03:18 PM"
+	layout := "Jan 02, 2006 3:04 PM"
+	parsedTime, err = time.Parse(layout, str)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%v\n", parsedTime)
+
+	str = "2024-07-04T14:30:00Z"
+	layout = "2006-01-02T15:04:05Z"
+	parsedTime, err = time.Parse(layout, str)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%v\n", parsedTime)
 }
