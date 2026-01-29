@@ -24,12 +24,13 @@ highest=$(ls $parent | sort | tail -1 | cut -c 1 -c 2)
 
 # add 1 to highest
 current=$((10#$highest + 1))
+formatted_current=$(printf "%02d" $current)
 
 # create new dir with name $2
-mkdir -p ${parent}/${current}_${package}
+mkdir -p ${parent}/${formatted_current}_${package}
 
 # create .go file with name $2
-touch ${parent}/${current}_${package}/${package}.go
+touch ${parent}/${formatted_current}_${package}/${package}.go
 
 # add main function to .go file
-printf "package main\n\nfunc main() {\n\n}" > ${parent}/${current}_${package}/${package}.go
+printf "package main\n\nfunc main() {\n\n}" > ${parent}/${formatted_current}_${package}/${package}.go
