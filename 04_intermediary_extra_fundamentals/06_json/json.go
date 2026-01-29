@@ -7,8 +7,8 @@ import (
 
 // struct tags that define the json format
 type Person struct {
-	Name    string  `json:"name"`
-	Age     int     `json:"age"`
+	Name    string  `json:"name" db:"name"`
+	Age     int     `json:"age" xml:"age"`
 	Email   string  `json:"email,omitempty"`
 	Address Address `json:"address"`
 }
