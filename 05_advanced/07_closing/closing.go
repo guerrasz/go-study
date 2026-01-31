@@ -19,7 +19,7 @@ func produce(ch chan<- int) {
 	for i := range 5 {
 		ch <- i
 	}
-	// close the channel after everything has been sent
+	// close the channel after everything has been sent 
 	close(ch)
 }
 
