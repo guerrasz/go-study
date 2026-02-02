@@ -31,6 +31,7 @@ func task() {
 	}
 }
 
+// NOTE: Basic timer example
 // func main() {
 // 	timer := time.NewTimer(2 * time.Second) // starts ticking immediately but is not blocking
 
