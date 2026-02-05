@@ -64,14 +64,19 @@ func (lb *LeakyBucket) Allow() bool {
 }
 
 func main() {
+	var wg sync.WaitGroup
 	leaky_bucket := NewLeakyBucket(5, 500*time.Millisecond)
 
 	for range 10 {
-		if leaky_bucket.Allow() {
-			fmt.Printf("Request accepted\n")
-		} else {
-			fmt.Printf("Request denied\n")
-		}
-		time.Sleep(200 * time.Millisecond)
+		wg.Go(func() {
+			if leaky_bucket.Allow() {
+				fmt.Printf("Request accepted\n")
+			} else {
+				fmt.Printf("Request denied\n")
+			}
+		})
+		//time.Sleep(200 * time.Millisecond)
 	}
+
+	wg.Wait()
 }
