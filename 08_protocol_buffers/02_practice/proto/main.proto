@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package main;
+
+import "proto/user/user.proto";
+
+option go_package = "/proto/gen;mainpb";
+
+service GreeterService {
+  rpc SayHello(SayHelloRequest) returns (SayHelloResponse);
+  rpc GetUserProfile(user.User) returns (UserProfile);
+}
+
+message SayHelloRequest {
+  string name = 1;
+  int32 age = 2;
+}
+
+message SayHelloResponse {
+  string conf_message = 1;
+}
+
+message UserProfile {
+  string username = 1;
+  string email = 2;
+}
